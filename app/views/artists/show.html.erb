@@ -1,0 +1,176 @@
+<div>
+  <div>
+    <h1>
+      Artist #<%= @the_artist.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/artists">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_artist/<%= @the_artist.id %>">
+          Delete artist
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_artist.name %>
+      </dd>
+
+      <dt>
+        Photo
+      </dt>
+      <dd>
+        <%= @the_artist.photo %>
+      </dd>
+
+      <dt>
+        Birth year
+      </dt>
+      <dd>
+        <%= @the_artist.birth_year %>
+      </dd>
+
+      <dt>
+        Country
+      </dt>
+      <dd>
+        <%= @the_artist.country %>
+      </dd>
+
+      <dt>
+        User artist
+      </dt>
+      <dd>
+        <%= @the_artist.user_artist_id %>
+      </dd>
+
+      <dt>
+        Inspiration
+      </dt>
+      <dd>
+        <%= @the_artist.inspiration_id %>
+      </dd>
+
+      <dt>
+        Visibility
+      </dt>
+      <dd>
+        <%= @the_artist.visibility %>
+      </dd>
+
+      <dt>
+        Artworks count
+      </dt>
+      <dd>
+        <%= @the_artist.artworks_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_artist.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_artist.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit artist
+    </h2>
+
+    <form action="/modify_artist/<%= @the_artist.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_artist.name %>">
+      </div>
+
+      <div>
+        <label for="photo_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_box" name="query_photo" value="<%= @the_artist.photo %>">
+      </div>
+
+      <div>
+        <label for="birth_year_box">
+          Birth year
+        </label>
+
+        <input type="date" id="birth_year_box" name="query_birth_year" value="<%= @the_artist.birth_year %>">
+      </div>
+
+      <div>
+        <label for="country_box">
+          Country
+        </label>
+
+        <input type="text" id="country_box" name="query_country" value="<%= @the_artist.country %>">
+      </div>
+
+      <div>
+        <label for="user_artist_id_box">
+          User artist
+        </label>
+
+        <input type="text" id="user_artist_id_box" name="query_user_artist_id" value="<%= @the_artist.user_artist_id %>">
+      </div>
+
+      <div>
+        <label for="inspiration_id_box">
+          Inspiration
+        </label>
+
+        <input type="text" id="inspiration_id_box" name="query_inspiration_id" value="<%= @the_artist.inspiration_id %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="visibility_box" name="query_visibility" value="1" <%= "checked" if @the_artist.visibility %>>
+
+        <label for="visibility_box">
+            Visibility
+        </label>
+      </div>
+
+      <div>
+        <label for="artworks_count_box">
+          Artworks count
+        </label>
+
+        <input type="text" id="artworks_count_box" name="query_artworks_count" value="<%= @the_artist.artworks_count %>">
+      </div>
+
+      <button>
+        Update artist
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

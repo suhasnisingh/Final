@@ -1,0 +1,176 @@
+<div>
+  <div>
+    <h1>
+      Inspiration #<%= @the_inspiration.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/inspirations">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_inspiration/<%= @the_inspiration.id %>">
+          Delete inspiration
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_inspiration.name %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_inspiration.description %>
+      </dd>
+
+      <dt>
+        Other notes
+      </dt>
+      <dd>
+        <%= @the_inspiration.other_notes %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_inspiration.user_id %>
+      </dd>
+
+      <dt>
+        Visibility
+      </dt>
+      <dd>
+        <%= @the_inspiration.visibility %>
+      </dd>
+
+      <dt>
+        Projects count
+      </dt>
+      <dd>
+        <%= @the_inspiration.projects_count %>
+      </dd>
+
+      <dt>
+        Artists count
+      </dt>
+      <dd>
+        <%= @the_inspiration.artists_count %>
+      </dd>
+
+      <dt>
+        Artworks count
+      </dt>
+      <dd>
+        <%= @the_inspiration.artworks_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_inspiration.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_inspiration.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit inspiration
+    </h2>
+
+    <form action="/modify_inspiration/<%= @the_inspiration.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_inspiration.name %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_inspiration.description %>">
+      </div>
+
+      <div>
+        <label for="other_notes_box">
+          Other notes
+        </label>
+
+        <input type="text" id="other_notes_box" name="query_other_notes" value="<%= @the_inspiration.other_notes %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_inspiration.user_id %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="visibility_box" name="query_visibility" value="1" <%= "checked" if @the_inspiration.visibility %>>
+
+        <label for="visibility_box">
+            Visibility
+        </label>
+      </div>
+
+      <div>
+        <label for="projects_count_box">
+          Projects count
+        </label>
+
+        <input type="text" id="projects_count_box" name="query_projects_count" value="<%= @the_inspiration.projects_count %>">
+      </div>
+
+      <div>
+        <label for="artists_count_box">
+          Artists count
+        </label>
+
+        <input type="text" id="artists_count_box" name="query_artists_count" value="<%= @the_inspiration.artists_count %>">
+      </div>
+
+      <div>
+        <label for="artworks_count_box">
+          Artworks count
+        </label>
+
+        <input type="text" id="artworks_count_box" name="query_artworks_count" value="<%= @the_inspiration.artworks_count %>">
+      </div>
+
+      <button>
+        Update inspiration
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

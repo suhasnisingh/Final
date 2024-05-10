@@ -1,0 +1,236 @@
+<div>
+  <div>
+    <h1>
+      Artwork #<%= @the_artwork.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/artworks">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_artwork/<%= @the_artwork.id %>">
+          Delete artwork
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_artwork.title %>
+      </dd>
+
+      <dt>
+        Photo
+      </dt>
+      <dd>
+        <%= @the_artwork.photo %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_artwork.description %>
+      </dd>
+
+      <dt>
+        Year
+      </dt>
+      <dd>
+        <%= @the_artwork.year %>
+      </dd>
+
+      <dt>
+        Location
+      </dt>
+      <dd>
+        <%= @the_artwork.location %>
+      </dd>
+
+      <dt>
+        Artist
+      </dt>
+      <dd>
+        <%= @the_artwork.artist_id %>
+      </dd>
+
+      <dt>
+        Style
+      </dt>
+      <dd>
+        <%= @the_artwork.style_id %>
+      </dd>
+
+      <dt>
+        Inspiration
+      </dt>
+      <dd>
+        <%= @the_artwork.inspiration_id %>
+      </dd>
+
+      <dt>
+        Project
+      </dt>
+      <dd>
+        <%= @the_artwork.project_id %>
+      </dd>
+
+      <dt>
+        Visibility
+      </dt>
+      <dd>
+        <%= @the_artwork.visibility %>
+      </dd>
+
+      <dt>
+        Likes count
+      </dt>
+      <dd>
+        <%= @the_artwork.likes_count %>
+      </dd>
+
+      <dt>
+        Comments count
+      </dt>
+      <dd>
+        <%= @the_artwork.comments_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_artwork.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_artwork.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit artwork
+    </h2>
+
+    <form action="/modify_artwork/<%= @the_artwork.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_artwork.title %>">
+      </div>
+
+      <div>
+        <label for="photo_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_box" name="query_photo" value="<%= @the_artwork.photo %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_artwork.description %>">
+      </div>
+
+      <div>
+        <label for="year_box">
+          Year
+        </label>
+
+        <input type="date" id="year_box" name="query_year" value="<%= @the_artwork.year %>">
+      </div>
+
+      <div>
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="query_location" value="<%= @the_artwork.location %>">
+      </div>
+
+      <div>
+        <label for="artist_id_box">
+          Artist
+        </label>
+
+        <input type="text" id="artist_id_box" name="query_artist_id" value="<%= @the_artwork.artist_id %>">
+      </div>
+
+      <div>
+        <label for="style_id_box">
+          Style
+        </label>
+
+        <input type="text" id="style_id_box" name="query_style_id" value="<%= @the_artwork.style_id %>">
+      </div>
+
+      <div>
+        <label for="inspiration_id_box">
+          Inspiration
+        </label>
+
+        <input type="text" id="inspiration_id_box" name="query_inspiration_id" value="<%= @the_artwork.inspiration_id %>">
+      </div>
+
+      <div>
+        <label for="project_id_box">
+          Project
+        </label>
+
+        <input type="text" id="project_id_box" name="query_project_id" value="<%= @the_artwork.project_id %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="visibility_box" name="query_visibility" value="1" <%= "checked" if @the_artwork.visibility %>>
+
+        <label for="visibility_box">
+            Visibility
+        </label>
+      </div>
+
+      <div>
+        <label for="likes_count_box">
+          Likes count
+        </label>
+
+        <input type="text" id="likes_count_box" name="query_likes_count" value="<%= @the_artwork.likes_count %>">
+      </div>
+
+      <div>
+        <label for="comments_count_box">
+          Comments count
+        </label>
+
+        <input type="text" id="comments_count_box" name="query_comments_count" value="<%= @the_artwork.comments_count %>">
+      </div>
+
+      <button>
+        Update artwork
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

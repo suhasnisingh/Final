@@ -1,0 +1,196 @@
+<div>
+  <div>
+    <h1>
+      List of all inspirations
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new inspiration
+    </h2>
+
+    <form action="/insert_inspiration" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description">
+      </div>
+
+      <div>
+        <label for="other_notes_box">
+          Other notes
+        </label>
+
+        <input type="text" id="other_notes_box" name="query_other_notes">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <input type="checkbox" id="visibility_box" name="query_visibility" value="1">
+
+        <label for="visibility_box">Visibility</label>
+      </div>
+
+      <div>
+        <label for="projects_count_box">
+          Projects count
+        </label>
+
+        <input type="text" id="projects_count_box" name="query_projects_count">
+      </div>
+
+      <div>
+        <label for="artists_count_box">
+          Artists count
+        </label>
+
+        <input type="text" id="artists_count_box" name="query_artists_count">
+      </div>
+
+      <div>
+        <label for="artworks_count_box">
+          Artworks count
+        </label>
+
+        <input type="text" id="artworks_count_box" name="query_artworks_count">
+      </div>
+
+      <button>
+        Create inspiration
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Other notes
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Visibility
+        </th>
+
+        <th>
+          Projects count
+        </th>
+
+        <th>
+          Artists count
+        </th>
+
+        <th>
+          Artworks count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_inspirations.each do |an_inspiration| %>
+      <tr>
+        <td>
+          <%= an_inspiration.id %>
+        </td>
+
+        <td>
+          <%= an_inspiration.name %>
+        </td>
+
+        <td>
+          <%= an_inspiration.description %>
+        </td>
+
+        <td>
+          <%= an_inspiration.other_notes %>
+        </td>
+
+        <td>
+          <%= an_inspiration.user_id %>
+        </td>
+
+        <td>
+          <%= an_inspiration.visibility %>
+        </td>
+
+        <td>
+          <%= an_inspiration.projects_count %>
+        </td>
+
+        <td>
+          <%= an_inspiration.artists_count %>
+        </td>
+
+        <td>
+          <%= an_inspiration.artworks_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_inspiration.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_inspiration.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/inspirations/<%= an_inspiration.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

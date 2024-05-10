@@ -1,0 +1,196 @@
+<div>
+  <div>
+    <h1>
+      List of all artists
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new artist
+    </h2>
+
+    <form action="/insert_artist" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="photo_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_box" name="query_photo">
+      </div>
+
+      <div>
+        <label for="birth_year_box">
+          Birth year
+        </label>
+
+        <input type="date" id="birth_year_box" name="query_birth_year">
+      </div>
+
+      <div>
+        <label for="country_box">
+          Country
+        </label>
+
+        <input type="text" id="country_box" name="query_country">
+      </div>
+
+      <div>
+        <label for="user_artist_id_box">
+          User artist
+        </label>
+
+        <input type="text" id="user_artist_id_box" name="query_user_artist_id">
+      </div>
+
+      <div>
+        <label for="inspiration_id_box">
+          Inspiration
+        </label>
+
+        <input type="text" id="inspiration_id_box" name="query_inspiration_id">
+      </div>
+
+      <div>
+        <input type="checkbox" id="visibility_box" name="query_visibility" value="1">
+
+        <label for="visibility_box">Visibility</label>
+      </div>
+
+      <div>
+        <label for="artworks_count_box">
+          Artworks count
+        </label>
+
+        <input type="text" id="artworks_count_box" name="query_artworks_count">
+      </div>
+
+      <button>
+        Create artist
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Photo
+        </th>
+
+        <th>
+          Birth year
+        </th>
+
+        <th>
+          Country
+        </th>
+
+        <th>
+          User artist
+        </th>
+
+        <th>
+          Inspiration
+        </th>
+
+        <th>
+          Visibility
+        </th>
+
+        <th>
+          Artworks count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_artists.each do |an_artist| %>
+      <tr>
+        <td>
+          <%= an_artist.id %>
+        </td>
+
+        <td>
+          <%= an_artist.name %>
+        </td>
+
+        <td>
+          <%= an_artist.photo %>
+        </td>
+
+        <td>
+          <%= an_artist.birth_year %>
+        </td>
+
+        <td>
+          <%= an_artist.country %>
+        </td>
+
+        <td>
+          <%= an_artist.user_artist_id %>
+        </td>
+
+        <td>
+          <%= an_artist.inspiration_id %>
+        </td>
+
+        <td>
+          <%= an_artist.visibility %>
+        </td>
+
+        <td>
+          <%= an_artist.artworks_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_artist.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_artist.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/artists/<%= an_artist.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,221 @@
+<div>
+  <div>
+    <h1>
+      Project #<%= @the_project.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/projects">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_project/<%= @the_project.id %>">
+          Delete project
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_project.title %>
+      </dd>
+
+      <dt>
+        Completed photo
+      </dt>
+      <dd>
+        <%= @the_project.completed_photo %>
+      </dd>
+
+      <dt>
+        Desription
+      </dt>
+      <dd>
+        <%= @the_project.desription %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_project.status %>
+      </dd>
+
+      <dt>
+        Start date
+      </dt>
+      <dd>
+        <%= @the_project.start_date %>
+      </dd>
+
+      <dt>
+        Finish date
+      </dt>
+      <dd>
+        <%= @the_project.finish_date %>
+      </dd>
+
+      <dt>
+        Other notes
+      </dt>
+      <dd>
+        <%= @the_project.other_notes %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_project.user_id %>
+      </dd>
+
+      <dt>
+        Inspiration
+      </dt>
+      <dd>
+        <%= @the_project.inspiration_id %>
+      </dd>
+
+      <dt>
+        Artworks count
+      </dt>
+      <dd>
+        <%= @the_project.artworks_count %>
+      </dd>
+
+      <dt>
+        Updates count
+      </dt>
+      <dd>
+        <%= @the_project.updates_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_project.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_project.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit project
+    </h2>
+
+    <form action="/modify_project/<%= @the_project.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_project.title %>">
+      </div>
+
+      <div>
+        <label for="completed_photo_box">
+          Completed photo
+        </label>
+
+        <input type="text" id="completed_photo_box" name="query_completed_photo" value="<%= @the_project.completed_photo %>">
+      </div>
+
+      <div>
+        <label for="desription_box">
+          Desription
+        </label>
+
+        <textarea id="desription_box" name="query_desription"><%= @the_project.desription %></textarea>
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_project.status %>">
+      </div>
+
+      <div>
+        <label for="start_date_box">
+          Start date
+        </label>
+
+        <input type="date" id="start_date_box" name="query_start_date" value="<%= @the_project.start_date %>">
+      </div>
+
+      <div>
+        <label for="finish_date_box">
+          Finish date
+        </label>
+
+        <input type="date" id="finish_date_box" name="query_finish_date" value="<%= @the_project.finish_date %>">
+      </div>
+
+      <div>
+        <label for="other_notes_box">
+          Other notes
+        </label>
+
+        <textarea id="other_notes_box" name="query_other_notes"><%= @the_project.other_notes %></textarea>
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_project.user_id %>">
+      </div>
+
+      <div>
+        <label for="inspiration_id_box">
+          Inspiration
+        </label>
+
+        <input type="text" id="inspiration_id_box" name="query_inspiration_id" value="<%= @the_project.inspiration_id %>">
+      </div>
+
+      <div>
+        <label for="artworks_count_box">
+          Artworks count
+        </label>
+
+        <input type="text" id="artworks_count_box" name="query_artworks_count" value="<%= @the_project.artworks_count %>">
+      </div>
+
+      <div>
+        <label for="updates_count_box">
+          Updates count
+        </label>
+
+        <input type="text" id="updates_count_box" name="query_updates_count" value="<%= @the_project.updates_count %>">
+      </div>
+
+      <button>
+        Update project
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
