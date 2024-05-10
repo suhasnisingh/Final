@@ -23,5 +23,5 @@ class Project < ApplicationRecord
   has_many  :updates, class_name: "Update", foreign_key: "project_id", dependent: :destroy
   
   ## double check
-  belongs_to :inspiration, class_name: "Inspiration", index: { unique: true }, foreign_key: "inspiration_id", counter_cache: true
+  belongs_to :inspiration, class_name: "Inspiration", foreign_key: "inspiration_id", counter_cache: true
 end

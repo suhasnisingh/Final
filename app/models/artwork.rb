@@ -27,7 +27,7 @@ class Artwork < ApplicationRecord
   belongs_to :project, class_name: "Project", foreign_key: "project_id", counter_cache: true
 
   ## double check
-  belongs_to :inspiration, class_name: "Inspiration", index: { unique: true }, foreign_key: "inspiration_id", counter_cache: true
+  belongs_to :inspiration, class_name: "Inspiration", foreign_key: "inspiration_id", counter_cache: true
 
   has_one  :user_artist, through: :artist, source: :user_artist
   has_many :liking_users, through: :likes, source: :user
