@@ -10,4 +10,6 @@
 #  project_id :integer
 #
 class Update < ApplicationRecord
+  belongs_to :project, required: true, class_name: "Project", foreign_key: "project_id", counter_cache: true
+  
 end

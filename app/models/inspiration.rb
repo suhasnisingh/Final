@@ -15,4 +15,8 @@
 #  user_id        :integer
 #
 class Inspiration < ApplicationRecord
+  belongs_to :user, required: true, class_name: "User", foreign_key: "user_id", counter_cache: true
+  has_one  :project, class_name: "Project", foreign_key: "inspiration_id", dependent: :nullify
+  has_many  :artists, class_name: "Artist", foreign_key: "inspiration_id", dependent: :nullify
+  has_many  :artworks, class_name: "Artwork", foreign_key: "inspiration_id", dependent: :nullify
 end
