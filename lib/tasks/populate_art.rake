@@ -1,6 +1,3 @@
-require 'net/http'
-require 'json'
-
 namespace :populate do
   desc "Populate the Artists and Artworks tables from Artsy's public API"
 
@@ -25,9 +22,9 @@ namespace :populate do
     end
   end
 
-  # Function to fetch artists from the first page with valid dob and insert them into the Artist table
-  def fetch_and_insert_artists(token)
-    uri = URI("https://api.artsy.net/api/artists?size=200") # Fetch 200 artists from the first page
+  # Function to fetch artists from a specific page
+  def fetch_artists_page(token, page)
+    uri = URI("https://api.artsy.net/api/artists?page=#{page}&size=5000") # Fetch 50 artists per page
     request = Net::HTTP::Get.new(uri)
     request['X-Xapp-Token'] = token.strip
     request['Content-Type'] = 'application/json'
@@ -39,28 +36,51 @@ namespace :populate do
     if response.is_a?(Net::HTTPSuccess)
       artists_data = JSON.parse(response.body)
       artists = artists_data['_embedded']['artists']
-
-      artists.each do |artist|
-        next unless artist['birthday'] && artist['birthday'].to_i > 0 # Skip artists without a valid dob
-
-        # Insert artist into the database
-        Artist.create!(
-          artist_api_id: artist['id'],
-          name: artist['name'],
-          birth_year: artist['birthday'],
-          photo: artist['thumbnail'] ? artist['thumbnail']['image_url'] : nil
-        )
-      end
-
-      puts "Inserted #{artists.length} artists into the database"
+      return artists || [] # Return an empty array if no artists are retrieved
     else
       raise "Failed to fetch artists from Artsy: #{response.code} - #{response.message}"
     end
   end
 
+  # Function to fetch and create artists with valid birthday and deathday
+  def fetch_and_create_artists(token)
+    new_artists_count = 0
+    page = 1
+
+    puts "Fetching artists - Page #{page}"
+    page_artists = fetch_artists_page(token, page)
+    puts "Page #{page} retrieved #{page_artists.length} artists"
+
+    page_artists.each do |artist|
+      next if artist['birthday'].nil? || artist['birthday'] == '' ||
+      artist['deathday'].nil? || artist['deathday'] == '' ||
+      artist['nationality'].nil? || artist['nationality'] == ''
+
+      # Assuming Artist model has attributes: name, birth_year, death_year, country
+      Artist.create!(
+        name: artist['name'],
+        birth_year: artist['birthday'],
+        country: artist['nationality'],
+        photo: artist.dig("_links", "thumbnail", "href")
+        # Add other attributes as needed
+      )
+
+      new_artists_count += 1
+      break if new_artists_count >= 10 # Limit to 10 artists
+    end
+
+    puts "Total artists retrieved: #{new_artists_count}"
+  end
+
   task :art => :environment do
+
+    Artist.destroy_all
+
     token = get_artsy_access_token
 
-    fetch_and_insert_artists(token)
+    fetch_and_create_artists(token)
+
+    # Now you can populate your database with the retrieved artists
+    # Your implementation to populate the database
   end
 end
