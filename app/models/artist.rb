@@ -11,6 +11,7 @@
 #  visibility     :boolean
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  artist_api_id  :string
 #  inspiration_id :integer
 #  user_artist_id :integer
 #
