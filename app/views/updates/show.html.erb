@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Update #<%= @the_update.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/updates">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_update/<%= @the_update.id %>">
+          Delete update
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Photo
+      </dt>
+      <dd>
+        <%= @the_update.photo %>
+      </dd>
+
+      <dt>
+        Body
+      </dt>
+      <dd>
+        <%= @the_update.body %>
+      </dd>
+
+      <dt>
+        Project
+      </dt>
+      <dd>
+        <%= @the_update.project_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_update.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_update.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit update
+    </h2>
+
+    <form action="/modify_update/<%= @the_update.id %>"  method="post" >
+      <div>
+        <label for="photo_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_box" name="query_photo" value="<%= @the_update.photo %>">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <textarea id="body_box" name="query_body"><%= @the_update.body %></textarea>
+      </div>
+
+      <div>
+        <label for="project_id_box">
+          Project
+        </label>
+
+        <input type="text" id="project_id_box" name="query_project_id" value="<%= @the_update.project_id %>">
+      </div>
+
+      <button>
+        Update update
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

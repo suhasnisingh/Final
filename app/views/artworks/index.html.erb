@@ -1,0 +1,260 @@
+<div>
+  <div>
+    <h1>
+      List of all artworks
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new artwork
+    </h2>
+
+    <form action="/insert_artwork" method="post">
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <div>
+        <label for="photo_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_box" name="query_photo">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description">
+      </div>
+
+      <div>
+        <label for="year_box">
+          Year
+        </label>
+
+        <input type="date" id="year_box" name="query_year">
+      </div>
+
+      <div>
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="query_location">
+      </div>
+
+      <div>
+        <label for="artist_id_box">
+          Artist
+        </label>
+
+        <input type="text" id="artist_id_box" name="query_artist_id">
+      </div>
+
+      <div>
+        <label for="style_id_box">
+          Style
+        </label>
+
+        <input type="text" id="style_id_box" name="query_style_id">
+      </div>
+
+      <div>
+        <label for="inspiration_id_box">
+          Inspiration
+        </label>
+
+        <input type="text" id="inspiration_id_box" name="query_inspiration_id">
+      </div>
+
+      <div>
+        <label for="project_id_box">
+          Project
+        </label>
+
+        <input type="text" id="project_id_box" name="query_project_id">
+      </div>
+
+      <div>
+        <input type="checkbox" id="visibility_box" name="query_visibility" value="1">
+
+        <label for="visibility_box">Visibility</label>
+      </div>
+
+      <div>
+        <label for="likes_count_box">
+          Likes count
+        </label>
+
+        <input type="text" id="likes_count_box" name="query_likes_count">
+      </div>
+
+      <div>
+        <label for="comments_count_box">
+          Comments count
+        </label>
+
+        <input type="text" id="comments_count_box" name="query_comments_count">
+      </div>
+
+      <button>
+        Create artwork
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Photo
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Year
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Artist
+        </th>
+
+        <th>
+          Style
+        </th>
+
+        <th>
+          Inspiration
+        </th>
+
+        <th>
+          Project
+        </th>
+
+        <th>
+          Visibility
+        </th>
+
+        <th>
+          Likes count
+        </th>
+
+        <th>
+          Comments count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_artworks.each do |an_artwork| %>
+      <tr>
+        <td>
+          <%= an_artwork.id %>
+        </td>
+
+        <td>
+          <%= an_artwork.title %>
+        </td>
+
+        <td>
+          <%= an_artwork.photo %>
+        </td>
+
+        <td>
+          <%= an_artwork.description %>
+        </td>
+
+        <td>
+          <%= an_artwork.year %>
+        </td>
+
+        <td>
+          <%= an_artwork.location %>
+        </td>
+
+        <td>
+          <%= an_artwork.artist_id %>
+        </td>
+
+        <td>
+          <%= an_artwork.style_id %>
+        </td>
+
+        <td>
+          <%= an_artwork.inspiration_id %>
+        </td>
+
+        <td>
+          <%= an_artwork.project_id %>
+        </td>
+
+        <td>
+          <%= an_artwork.visibility %>
+        </td>
+
+        <td>
+          <%= an_artwork.likes_count %>
+        </td>
+
+        <td>
+          <%= an_artwork.comments_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_artwork.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_artwork.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/artworks/<%= an_artwork.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

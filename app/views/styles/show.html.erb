@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Style #<%= @the_style.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/styles">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_style/<%= @the_style.id %>">
+          Delete style
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_style.name %>
+      </dd>
+
+      <dt>
+        Artworks count
+      </dt>
+      <dd>
+        <%= @the_style.artworks_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_style.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_style.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit style
+    </h2>
+
+    <form action="/modify_style/<%= @the_style.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_style.name %>">
+      </div>
+
+      <div>
+        <label for="artworks_count_box">
+          Artworks count
+        </label>
+
+        <input type="text" id="artworks_count_box" name="query_artworks_count" value="<%= @the_style.artworks_count %>">
+      </div>
+
+      <button>
+        Update style
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

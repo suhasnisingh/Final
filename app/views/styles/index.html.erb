@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all styles
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new style
+    </h2>
+
+    <form action="/insert_style" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="artworks_count_box">
+          Artworks count
+        </label>
+
+        <input type="text" id="artworks_count_box" name="query_artworks_count">
+      </div>
+
+      <button>
+        Create style
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Artworks count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_styles.each do |a_style| %>
+      <tr>
+        <td>
+          <%= a_style.id %>
+        </td>
+
+        <td>
+          <%= a_style.name %>
+        </td>
+
+        <td>
+          <%= a_style.artworks_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_style.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_style.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/styles/<%= a_style.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
