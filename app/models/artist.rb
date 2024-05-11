@@ -18,10 +18,10 @@
 class Artist < ApplicationRecord
 
   ## double check
-  belongs_to :user_artist, class_name: "User", foreign_key: "user_artist_id"
+  belongs_to :user_artist, class_name: "User", foreign_key: "user_artist_id", optional: true
 
   has_many  :artworks, class_name: "Artwork", foreign_key: "artist_id", dependent: :destroy
-  belongs_to :inspiration, class_name: "Inspiration", foreign_key: "inspiration_id", counter_cache: true
+  belongs_to :inspiration, class_name: "Inspiration", foreign_key: "inspiration_id", counter_cache: true, optional: true
   has_many :styles, through: :artworks, source: :style
   
 end
